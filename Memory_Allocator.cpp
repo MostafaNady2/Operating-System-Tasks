@@ -52,6 +52,7 @@ public:
                 int end = start + numOfEntries - 1;
                 if (end >= memory.size() || memory[end] > 0)
                 {
+                    i = end;
                     continue;
                 }
                 else
@@ -84,6 +85,7 @@ public:
                 int end = start + numOfEntries - 1;
                 if (end >= memory.size() || memory[end] > 0)
                 {
+                    i = end;
                     continue;
                 }
                 else
@@ -123,6 +125,7 @@ public:
                 int end = start + numOfEntries - 1;
                 if (end >= memory.size() || memory[end] > 0)
                 {
+                    i = end;
                     continue;
                 }
                 else
@@ -219,6 +222,13 @@ public:
             }
             first = i;
         }
+    }
+    ~MemoryAllocator()
+    {
+        memory.clear();
+        process_map.clear();
+        total_memory = 0;
+        process_id = 0;
     }
 };
 void startShell(MemoryAllocator &allocator)
