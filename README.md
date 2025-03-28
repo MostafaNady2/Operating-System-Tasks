@@ -26,18 +26,28 @@ and Worst Fit allocation algorithms in a 32-bit system with paged memory.
 2. **Run** (Specify total memory in bytes)  
    `./allocator 1073741824`  
    *(Launches with 1GB simulated memory)*
+---
+## Commands
+- `RQ <process_name> <size> <allocation_strategy>`
+    - Request memory allocation
+    - Allocation strategies : 
+        - `F` : First Fit
+        - `B` : Best Fit
+        - `W` : Worst Fit
+- `RL <process_name>`: Release memory for a specific process
+- `C` : Compact memory
+- `STAT` : Display memory status
+- `X` : Exit the program
 
-## Command Reference
-| Command | Parameters           | Action                                  |
-|---------|----------------------|-----------------------------------------|
-| RQ      | name size [F\|B\|W] | Request memory allocation               |
-| RL      | process_name         | Release allocated memory                |
-| C       |                      | Compact memory blocks                   |
-| STAT     |                      | Show memory map                         |
-| X       |                      | Exit program                            |
 
 **Allocation Example**  
-`allocator> RQ Chrome 524288 B`  
+```
+allocator> RQ Chrome 524288 B 
+allocator> STAT
+allocator> RL Chrome
+allocator> C
+allocator> X
+```
 Allocates 512KB for "Chrome" using Best Fit strategy
 
 ## Technical Details
@@ -52,7 +62,13 @@ Allocates 512KB for "Chrome" using Best Fit strategy
 - **Best Fit**: Space-efficient, higher search overhead
 - **Worst Fit**: Reduces small fragments, best for large allocations
 ---
+#### Implementation Highlights
 
+- Dynamic memory tracking using C++ STL containers
+- Support for multiple concurrent processes
+- Flexible allocation strategy selection
+- Efficient memory compaction mechanism
+---
 
 
 
