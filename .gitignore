@@ -1,5 +1,26 @@
-.cpp_checksum
-a.out
-allocator
-.vscode/
+# Ignore all files
+*
 
+# But track these specific files
+!Memory_Allocator.cpp
+!README.md
+!.gitignore
+
+# Ignore specific directories
+.vscode/
+allocator/
+
+# Compiled files and executables
+*.out
+a.out
+
+# Checksum files
+.cpp_checksum
+
+# Temporary files
+*.swp
+*~
+
+# System files
+.DS_Store
+Thumbs.db
