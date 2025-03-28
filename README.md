@@ -21,7 +21,7 @@ and Worst Fit allocation algorithms in a 32-bit system with paged memory.
 
 ## Quick Start
 1. **Compile**  
-   `g++ -std=c++17 main.cpp -o allocator`
+   `g++ -std=c++17 Memory_Allocator.cpp -o allocator`
 
 2. **Run** (Specify total memory in bytes)  
    `./allocator 1073741824`  
