@@ -16,7 +16,7 @@ public:
     MemoryAllocator(long long total_memory)
     {
         this->total_memory = total_memory;
-        memory.resize(total_memory / 4);             // 4 bytes per int
+        memory.resize(total_memory / 4); // 4 bytes per int
         fill(memory.begin(), memory.end(), 0);
         process_id = 0;
     }
@@ -24,7 +24,7 @@ public:
     {
         process_id++;
         process_map[process_id] = process_name;
-        switch (option)
+        switch (toupper(option))
         {
         case 'F':
             firstFit(size);
@@ -42,7 +42,7 @@ public:
     }
     void firstFit(int size)
     {
-        int numOfEntries = size / 4;
+        int numOfEntries = (size + 3) / 4; // due to integer division
         bool allocated = false;
         for (int i = 0; i < memory.size(); i++)
         {
@@ -73,7 +73,7 @@ public:
     }
     void bestFit(int size)
     {
-        int numOfEntries = size / 4;
+        int numOfEntries = (size + 3) / 4;
         bool allocated = false;
         int bestFitIndex = -1;
         int bestFitSize = INT_MAX;
@@ -113,7 +113,7 @@ public:
     }
     void worstFit(int size)
     {
-        int numOfEntries = size / 4;
+        int numOfEntries = (size + 3) / 4;
         bool allocated = false;
         int worstFitIndex = -1;
         int worstFitSize = INT_MIN;
@@ -214,11 +214,11 @@ public:
             }
             if (memory[first] == 0)
             {
-                cout << "[" << first << " : " << i - 1 << "]" << " Unused " << endl;
+                cout << "[" << first * 4 << " : " << ((i - 1) * 4) + 3 << "]" << " Unused " << endl;
             }
             else
             {
-                cout << "[" << first << " : " << i - 1 << "]" << " Process " << process_map[memory[first]] << endl;
+                cout << "[" << first * 4 << " : " << ((i - 1) * 4) + 3 << "]" << " Process " << process_map[memory[first]] << endl;
             }
             first = i;
         }
