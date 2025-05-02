@@ -5,6 +5,7 @@
 !Memory_Allocator.cpp
 !README.md
 !.gitignore
+!Disk_Scheduling.cpp
 
 # Ignore specific directories
 .vscode/
